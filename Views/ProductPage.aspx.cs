@@ -15,6 +15,10 @@ namespace MVPdemo.Views
     public partial class ProductPage : System.Web.UI.Page, IProductView
     {
          private readonly ProductPresenter presenter;
+
+
+      public event EventHandler AddProductRequest;
+      public event EventHandler LoadProductRequest;
         public ProductPage()
         {
             presenter = new ProductPresenter(this);
@@ -24,7 +28,9 @@ namespace MVPdemo.Views
         {
             if (!IsPostBack)
             {
-                presenter.LoadProduct();
+                LoadProductRequest?.Invoke(this, EventArgs.Empty);
+
+
             }
         
         }
@@ -45,14 +51,13 @@ namespace MVPdemo.Views
         protected void btnSave_Click(object sender, EventArgs e)
         {
 
-            presenter.AddProduct();
-
+            AddProductRequest?.Invoke(this, EventArgs.Empty);
             txtName.Text =string.Empty;
             txtDescription.Text = string.Empty;
         }
         protected void btnLoad_Click(object sender, EventArgs e)
         {
-            presenter.LoadProduct();
+            LoadProductRequest.Invoke(this, EventArgs.Empty);
         }
         public void ShowProduct(List<Product> products)
         {
@@ -66,7 +71,7 @@ namespace MVPdemo.Views
             {
                 int id = Convert.ToInt32(e.CommandArgument);    
                 presenter.DeleteProduct(id);
-                presenter.LoadProduct();
+                //presenter.LoadProduct();
 
                 lblMessage.Text = "Data Delete successfuly";
             }

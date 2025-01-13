@@ -61,3 +61,7 @@ C:\Users\All Makkah Malik\source\repos\MVPdemo\bin\Microsoft.Practices.Enterpris
 C:\Users\All Makkah Malik\source\repos\MVPdemo\bin\Microsoft.Practices.EnterpriseLibrary.Data.dll
 C:\Users\All Makkah Malik\source\repos\MVPdemo\bin\Microsoft.Practices.EnterpriseLibrary.Common.xml
 C:\Users\All Makkah Malik\source\repos\MVPdemo\bin\Microsoft.Practices.EnterpriseLibrary.Data.xml
+D:\Github\MvpDelegates\obj\Debug\MVPdemo.csproj.AssemblyReference.cache
+D:\Github\MvpDelegates\obj\Debug\MVPdemo.csproj.CoreCompileInputs.cache
+D:\Github\MvpDelegates\obj\Debug\MVPdemo.dll
+D:\Github\MvpDelegates\obj\Debug\MVPdemo.pdb

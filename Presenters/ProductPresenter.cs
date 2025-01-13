@@ -20,31 +20,36 @@ namespace MVPdemo.Presenters
              model = new DatabaseHelper();
             _view.AddProductRequest += OnAddProductRequested;
             _view.LoadProductRequest += OnLoadPorductRequested;
-            _view.RemoveProductRequest += OnRemoveProductRequested;
-            _view.LoadProductForEditRequest += OnLoadProductForEditRequested;
-            _view.UpdateProductRequest += OnUpdateProductRequested;
+            //_view.RemoveProductRequest += OnRemoveProductRequested;
+            //_view.LoadProductForEditRequest += OnLoadProductForEditRequested;
+            //_view.UpdateProductRequest += OnUpdateProductRequested;
  
         }
 
-
-       public void AddProduct()
+        public void OnAddProductRequested(object sender, EventArgs e)
         {
-            var product = new Product
+            var product = new Product()
             {
                 Name = _view.ProductName,
                 Description = _view.ProductDescription
+
             };
-             model.AddProduct(product);
+            model.AddProduct(product);
             _view.DisplayMessage("Add product successfuly");
+            OnLoadPorductRequested(sender, e);
         }
 
-       public void LoadProduct() 
+        public void OnLoadPorductRequested(object sender, EventArgs e)
         {
             List<Product> products = model.GetProduct();
             _view.ShowProduct(products);
+
         }
 
-       public void DeleteProduct(int id)
+
+        
+
+        public void DeleteProduct(int id)
         {
             model.DeleteProduct(id);
         }
