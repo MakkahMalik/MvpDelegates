@@ -18,9 +18,16 @@ namespace MVPdemo.Presenters
         {
             _view = view;
              model = new DatabaseHelper();
+            _view.AddProductRequest += OnAddProductRequested;
+            _view.LoadProductRequest += OnLoadPorductRequested;
+            _view.RemoveProductRequest += OnRemoveProductRequested;
+            _view.LoadProductForEditRequest += OnLoadProductForEditRequested;
+            _view.UpdateProductRequest += OnUpdateProductRequested;
+ 
         }
 
-      public void AddProduct()
+
+       public void AddProduct()
         {
             var product = new Product
             {
@@ -31,14 +38,13 @@ namespace MVPdemo.Presenters
             _view.DisplayMessage("Add product successfuly");
         }
 
-
-        public void LoadProduct() 
+       public void LoadProduct() 
         {
             List<Product> products = model.GetProduct();
             _view.ShowProduct(products);
         }
 
-        public void DeleteProduct(int id)
+       public void DeleteProduct(int id)
         {
             model.DeleteProduct(id);
         }
