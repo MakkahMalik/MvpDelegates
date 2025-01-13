@@ -1,5 +1,7 @@
 ﻿using MVPdemo.Data;
+using MVPdemo.Interfaces;
 using MVPdemo.Models;
+using MVPdemo.Presenters;
 using System;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -7,8 +9,15 @@ using System.Xml.Linq;
 
 namespace MVPdemo.Views
 {
-    public partial class EditProduct : Page
+    public partial class EditProduct : System.Web.UI.Page, IProductEdit
     {
+        private readonly ProductPresenter presenter;
+        public event EventHandler<int> LoadProductForEditRequest;
+        public event EventHandler<Product> UpdateProductRequest;
+        public EditProduct()
+        {
+            presenter = new ProductPresenter(null, this); // Pass only IProductEdit
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -17,48 +26,43 @@ namespace MVPdemo.Views
                 if (Request.QueryString["Id"] != null)
                 {
                     int productId = Convert.ToInt32(Request.QueryString["Id"]);
-                    LoadProductDetails(productId);
+                    LoadProductForEditRequest?.Invoke(this, productId);
                 }
             }
-        }      
-        // Load product details based on the product ID
-        private void LoadProductDetails(int productId)
+        }
+        public void LoadProductDetails(Product product)
         {
-            DatabaseHelper dbHelper = new DatabaseHelper();
-            Product product = dbHelper.GetProductById(productId);
-
             if (product != null)
             {
-                // Populate the fields with product details
                 hdnProductId.Value = product.Id.ToString();
                 txtProductName.Text = product.Name;
                 txtProductDescription.Text = product.Description;
             }
+            else
+            {
+                lblMessage.Text = "Product not found.";
+            }
         }
-
-        // On Update Button Click
+        public void DisplayMessage(string message)
+        {
+            lblMessage.Text = message;
+        }
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
             // Get values from form controls
-            int productId = Convert.ToInt32(hdnProductId.Value);
-            string productName = txtProductName.Text;
-            string productDescription = txtProductDescription.Text;
-
-            // Create Product object
             Product updatedProduct = new Product
             {
-                Id = productId,
-                Name = productName,
-                Description = productDescription
+                Id = Convert.ToInt32(hdnProductId.Value),
+                Name = txtProductName.Text,
+                Description = txtProductDescription.Text
             };
 
-            // Call DatabaseHelper to update the product in the database
-            DatabaseHelper dbHelper = new DatabaseHelper();
-            dbHelper.UpdateProduct(updatedProduct);
-            Response.Redirect("ProductPage.aspx");
+             UpdateProductRequest.Invoke(this, updatedProduct);
+
+             Response.Redirect("ProductPage.aspx");
 
             // Show success message
-            lblMessage.Text = "Product updated successfully!";
+             lblMessage.Text = "Product updated successfully!";
         }
 
     }

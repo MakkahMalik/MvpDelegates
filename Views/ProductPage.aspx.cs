@@ -14,14 +14,15 @@ namespace MVPdemo.Views
 {
     public partial class ProductPage : System.Web.UI.Page, IProductView
     {
-         private readonly ProductPresenter presenter;
-
+       private readonly ProductPresenter presenter;
 
       public event EventHandler AddProductRequest;
       public event EventHandler LoadProductRequest;
+      public event EventHandler<int> RemoveProductRequest;
+      public event EventHandler<int> LoadProductForEditRequest;
         public ProductPage()
         {
-            presenter = new ProductPresenter(this);
+            presenter = new ProductPresenter(this , null);
 
         }
         protected void Page_Load(object sender, EventArgs e)
@@ -70,7 +71,8 @@ namespace MVPdemo.Views
             if(e.CommandName == "DeleteProduct")
             {
                 int id = Convert.ToInt32(e.CommandArgument);    
-                presenter.DeleteProduct(id);
+                RemoveProductRequest.Invoke(this,id);
+                    
                 //presenter.LoadProduct();
 
                 lblMessage.Text = "Data Delete successfuly";
@@ -78,7 +80,7 @@ namespace MVPdemo.Views
             if (e.CommandName == "EditProduct")
                 {
                     int productId = Convert.ToInt32(e.CommandArgument);
-
+                    
                     // Redirect to the EditProduct page and pass the ProductId as a query string
                     Response.Redirect($"EditProduct.aspx?Id={productId}");
 

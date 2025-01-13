@@ -13,17 +13,26 @@ namespace MVPdemo.Presenters
     public class ProductPresenter
     {
         private readonly IProductView _view;
+        private readonly IProductEdit _EditView;
         private readonly DatabaseHelper model;
-        public ProductPresenter(IProductView view)
+        public ProductPresenter(IProductView view , IProductEdit EditView)
         {
             _view = view;
+            _EditView = EditView;
              model = new DatabaseHelper();
-            _view.AddProductRequest += OnAddProductRequested;
-            _view.LoadProductRequest += OnLoadPorductRequested;
-            //_view.RemoveProductRequest += OnRemoveProductRequested;
-            //_view.LoadProductForEditRequest += OnLoadProductForEditRequested;
-            //_view.UpdateProductRequest += OnUpdateProductRequested;
- 
+
+            if(_view != null)
+            {
+                _view.AddProductRequest += OnAddProductRequested;
+                _view.LoadProductRequest += OnLoadPorductRequested;
+                _view.RemoveProductRequest += OnRemoveProductRequested;
+            }
+
+            if (_EditView != null) {
+
+               _EditView.LoadProductForEditRequest += OnLoadProductForEditRequested;
+               _EditView.UpdateProductRequest += OnUpdateProductRequested;
+            }    
         }
 
         public void OnAddProductRequested(object sender, EventArgs e)
@@ -38,53 +47,34 @@ namespace MVPdemo.Presenters
             _view.DisplayMessage("Add product successfuly");
             OnLoadPorductRequested(sender, e);
         }
-
         public void OnLoadPorductRequested(object sender, EventArgs e)
         {
             List<Product> products = model.GetProduct();
             _view.ShowProduct(products);
 
         }
-
-
-        
-
-        public void DeleteProduct(int id)
+        public void OnRemoveProductRequested(object sender, int id)
         {
             model.DeleteProduct(id);
+            _view.DisplayMessage("product deleted successfuly");
+            OnLoadPorductRequested(sender, EventArgs.Empty);
         }
-
-        public void LoadProductForEdit(int productId)
+        private void OnLoadProductForEditRequested(object sender, int productId)
         {
-            
             Product product = model.GetProductById(productId);
             if (product != null)
             {
-                _view.ProductName = product.Name;
-                _view.ProductDescription = product.Description;
-            
+                _EditView.LoadProductDetails(product);
             }
             else
             {
-                _view.DisplayMessage("Product not found.");
+                _EditView.DisplayMessage("Product not found.");
             }
         }
-
-        public void UpdateProduct()
+        private void OnUpdateProductRequested(object sender, Product product)
         {
-            var updatedProduct = new Product
-            {
-           
-                Name = _view.ProductName,
-                Description = _view.ProductDescription
-            };
-              model.UpdateProduct(updatedProduct);
-
+            model.UpdateProduct(product);
+            _EditView.DisplayMessage("Product updated successfully!");
         }
-
-       
-
-
-
     }
     }
