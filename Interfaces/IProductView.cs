@@ -19,7 +19,7 @@ namespace MVPdemo.Interfaces
         event EventHandler<AddProductEventArgs> AddProductRequest;
         event EventHandler<LoadProductEventArgs> LoadProductRequest;
         event EventHandler<RemoveProductEventArgs> RemoveProductRequest;
-        event EventHandler<int> LoadProductForEditRequest;
+        //event EventHandler<int> LoadProductForEditRequest;
 
 
 

@@ -20,7 +20,7 @@ namespace MVPdemo.Views
         public event EventHandler<AddProductEventArgs> AddProductRequest;
         public event EventHandler<LoadProductEventArgs> LoadProductRequest;
         public event EventHandler<RemoveProductEventArgs> RemoveProductRequest;
-        public event EventHandler<int> LoadProductForEditRequest;
+    
         public ProductPage()
         {
             presenter = new ProductPresenter(this , null);
@@ -111,9 +111,6 @@ namespace MVPdemo.Views
             
 
         }
-
-
-
 
     }
 }
