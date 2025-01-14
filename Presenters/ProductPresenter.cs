@@ -35,7 +35,7 @@ namespace MVPdemo.Presenters
             }    
         }
 
-        public void OnAddProductRequested(object sender, EventArgs e)
+        public void OnAddProductRequested(object sender, AddProductEventArgs e)
         {
             var product = new Product()
             {
@@ -45,9 +45,9 @@ namespace MVPdemo.Presenters
             };
             model.AddProduct(product);
             _view.DisplayMessage("Add product successfuly");
-            OnLoadPorductRequested(sender, e);
+            OnLoadPorductRequested(sender, new LoadProductEventArgs());
         }
-        public void OnLoadPorductRequested(object sender, EventArgs e)
+        public void OnLoadPorductRequested(object sender, LoadProductEventArgs e)
         {
             List<Product> products = model.GetProduct();
             _view.ShowProduct(products);
@@ -57,7 +57,7 @@ namespace MVPdemo.Presenters
         {
             model.DeleteProduct(id);
             _view.DisplayMessage("product deleted successfuly");
-            OnLoadPorductRequested(sender, EventArgs.Empty);
+            //OnLoadPorductRequested(sender, EventArgs.Empty);
         }
         private void OnLoadProductForEditRequested(object sender, int productId)
         {

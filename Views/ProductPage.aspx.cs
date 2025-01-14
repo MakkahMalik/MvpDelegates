@@ -16,9 +16,9 @@ namespace MVPdemo.Views
     {
        private readonly ProductPresenter presenter;
 
-      public event EventHandler AddProductRequest;
-      public event EventHandler LoadProductRequest;
-      public event EventHandler<int> RemoveProductRequest;
+        public event EventHandler<AddProductEventArgs> AddProductRequest;
+        public event EventHandler<LoadProductEventArgs> LoadProductRequest;
+        public event EventHandler<int> RemoveProductRequest;
       public event EventHandler<int> LoadProductForEditRequest;
         public ProductPage()
         {
@@ -29,7 +29,7 @@ namespace MVPdemo.Views
         {
             if (!IsPostBack)
             {
-                LoadProductRequest?.Invoke(this, EventArgs.Empty);
+                LoadProductRequest?.Invoke(this, new LoadProductEventArgs());
 
 
             }
@@ -52,7 +52,12 @@ namespace MVPdemo.Views
         protected void btnSave_Click(object sender, EventArgs e)
         {
 
-            AddProductRequest?.Invoke(this, EventArgs.Empty);
+            AddProductRequest?.Invoke(this, new AddProductEventArgs
+            {
+                ProductName = txtName.Text,
+                ProductDescription = txtDescription.Text
+               
+            });
             txtName.Text =string.Empty;
             txtDescription.Text = string.Empty;
         }
