@@ -59,12 +59,19 @@ namespace MVPdemo.Views
         protected void btnSave_Click(object sender, EventArgs e)
         {
 
-            AddProductRequest?.Invoke(this, new AddProductEventArgs
+            //AddProductRequest?.Invoke(this, new AddProductEventArgs
+            //{
+            //    ProductName = txtName.Text,
+            //    ProductDescription = txtDescription.Text
+
+            //});
+            AddProductEventArgs args = new AddProductEventArgs()
             {
                 ProductName = txtName.Text,
                 ProductDescription = txtDescription.Text
-               
-            });
+            };
+
+            AddProductRequest.Invoke(this, args);
             txtName.Text =string.Empty;
             txtDescription.Text = string.Empty;
         }
@@ -88,7 +95,7 @@ namespace MVPdemo.Views
                 };
 
                 RemoveProductRequest.Invoke(this, eventArgs);
-                    
+                LoadProductRequest?.Invoke(this, new LoadProductEventArgs());
                 //presenter.LoadProduct();
 
                 lblMessage.Text = "Data Delete successfuly";

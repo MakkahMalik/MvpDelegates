@@ -39,8 +39,8 @@ namespace MVPdemo.Presenters
         {
             var product = new Product()
             {
-                Name = _view.ProductName,
-                Description = _view.ProductDescription
+                Name = e.ProductName,
+                Description = e.ProductDescription
 
             };
             model.AddProduct(product);
