@@ -16,15 +16,18 @@ namespace MVPdemo.Views
     {
        private readonly ProductPresenter presenter;
 
+        //event
         public event EventHandler<AddProductEventArgs> AddProductRequest;
         public event EventHandler<LoadProductEventArgs> LoadProductRequest;
-        public event EventHandler<int> RemoveProductRequest;
-      public event EventHandler<int> LoadProductForEditRequest;
+        public event EventHandler<RemoveProductEventArgs> RemoveProductRequest;
+        public event EventHandler<int> LoadProductForEditRequest;
         public ProductPage()
         {
             presenter = new ProductPresenter(this , null);
 
         }
+
+        //page load
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -44,11 +47,15 @@ namespace MVPdemo.Views
         {
             get => txtDescription.Text;
             set => txtDescription.Text = value;
-        }    
+        }
+
+        //disply masg
         public void DisplayMessage(string message)
         {
             lblMessage.Text = message;
         }
+
+        //btnsave
         protected void btnSave_Click(object sender, EventArgs e)
         {
 
@@ -61,19 +68,26 @@ namespace MVPdemo.Views
             txtName.Text =string.Empty;
             txtDescription.Text = string.Empty;
         }
-
+      
+        //showproduct
         public void ShowProduct(List<Product> products)
         {
             gvProduct.DataSource = products;
             gvProduct.DataBind();
         }
 
+        //argument for delete and edit
         protected void gvProduct_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if(e.CommandName == "DeleteProduct")
             {
-                int id = Convert.ToInt32(e.CommandArgument);    
-                RemoveProductRequest.Invoke(this,id);
+                int id = Convert.ToInt32(e.CommandArgument);
+                var eventArgs = new RemoveProductEventArgs
+                {
+                    ProductId = id
+                };
+
+                RemoveProductRequest.Invoke(this, eventArgs);
                     
                 //presenter.LoadProduct();
 

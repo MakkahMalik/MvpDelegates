@@ -12,8 +12,8 @@ namespace MVPdemo.Views
     public partial class EditProduct : System.Web.UI.Page, IProductEdit
     {
         private readonly ProductPresenter presenter;
-        public event EventHandler<int> LoadProductForEditRequest;
-        public event EventHandler<Product> UpdateProductRequest;
+        public event EventHandler<LoadProductForEditEventArgs> LoadProductForEditRequest;
+        public event EventHandler<UpdateProductEventArgs> UpdateProductRequest;
         public EditProduct()
         {
             presenter = new ProductPresenter(null, this); // Pass only IProductEdit
@@ -26,7 +26,7 @@ namespace MVPdemo.Views
                 if (Request.QueryString["Id"] != null)
                 {
                     int productId = Convert.ToInt32(Request.QueryString["Id"]);
-                    LoadProductForEditRequest?.Invoke(this, productId);
+                    LoadProductForEditRequest?.Invoke(this, new LoadProductForEditEventArgs { ProductId = productId });
                 }
             }
         }
@@ -50,14 +50,14 @@ namespace MVPdemo.Views
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
             // Get values from form controls
-            Product updatedProduct = new Product
+            UpdateProductEventArgs UpdateArg = new UpdateProductEventArgs()
             {
-                Id = Convert.ToInt32(hdnProductId.Value),
-                Name = txtProductName.Text,
-                Description = txtProductDescription.Text
+                ProductId = Convert.ToInt32(hdnProductId.Value),
+                ProductName = txtProductName.Text,
+                ProductDescription = txtProductDescription.Text
             };
 
-             UpdateProductRequest.Invoke(this, updatedProduct);
+             UpdateProductRequest.Invoke(this, UpdateArg);
 
              Response.Redirect("ProductPage.aspx");
 

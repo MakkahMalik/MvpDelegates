@@ -15,14 +15,9 @@
 
 
     <div class="container">
-  <h2>Stacked form</h2>
+  <h2 class="text-center mt-5">Add Product</h2>
     <form id="form2" runat="server">
    
-<%--      <div class="form-group">--%>
-     
-    <%--  <asp:Label ID="Label2" runat="server" Text="Id"></asp:Label>
-     <asp:TextBox ID="txtId" runat="server" CssClass="form-control"></asp:TextBox>
-    </div>--%>
    
       
       <div class="form-group">
@@ -35,12 +30,21 @@
       <div class="form-group mt-5">
       <asp:Label ID="Label3" runat="server" Text="ProdcutDescription"></asp:Label>
      <asp:TextBox ID="txtDescription" runat="server" CssClass="form-control"></asp:TextBox>
-     <asp:Button ID="btnSave" runat="server" Text="Save Product" CssClass="btn btn-danger mt-4"  OnClick="btnSave_Click" />
+     <asp:Button ID="btnSave" runat="server" Text="Save Product" CssClass="btn btn-danger mt-4"  OnClick="btnSave_Click"
+         Style="padding:11px 37px;
+         background: #507d2d;
+         border-radius: 10px;
+         font-family: bold;
+         border: none;
+         outline: none;"/>
 
     </div>
-
-       <asp:GridView ID="gvProduct" runat="server" CssClass="table table-striped" AutoGenerateColumns="False" OnRowCommand="gvProduct_RowCommand" >           
+        <div class="mt-5 mb-5 text-center">
+             <h2>Show Product List</h2>
+        </div>
+       <asp:GridView ID="gvProduct" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" OnRowCommand="gvProduct_RowCommand" >           
         <Columns>
+            
       <asp:BoundField DataField="Id" HeaderText="Id" />
       <asp:BoundField DataField="Name" HeaderText="Name" />
       <asp:BoundField DataField="Description" HeaderText="Description" /> 
@@ -48,9 +52,19 @@
            <asp:TemplateField>
             <ItemTemplate>
                 <asp:Button ID="btnDelete" runat="server" Text="Delete" 
-                    CommandName="DeleteProduct" CommandArgument='<%# Eval("Id") %>' CssClass="btn btn-danger btn-sm" />                            
+                    CommandName="DeleteProduct" CommandArgument='<%# Eval("Id") %>' CssClass="btn btn-danger btn-sm" 
+                    Style="padding:11px 37px;
+                           background: #d61515;
+                           border-radius: 10px;
+                           font-family: bold;" />                            
                 <asp:Button ID="btnEdit" runat="server" Text="Edit" 
-                CommandName="EditProduct" CommandArgument='<%# Eval("Id") %>' CssClass="btn btn-primary btn-sm" />
+                CommandName="EditProduct" CommandArgument='<%# Eval("Id") %>' CssClass="btn btn-primary btn-sm"
+                           Style="padding: 11px 40px;
+                           background: #1e1c1c;
+                           border-radius: 10px;
+                           font-family: bold;
+                           border: none;
+                           outline: none;"/>
 
             </ItemTemplate> 
                  

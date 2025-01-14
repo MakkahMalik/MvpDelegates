@@ -30,6 +30,11 @@ namespace MVPdemo.Interfaces
     {
     }
 
+    public class LoadProductForEditEventArgs : EventArgs
+    {
+        public int ProductId { get; set; }
+    }
+
 
 
 

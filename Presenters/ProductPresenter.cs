@@ -29,12 +29,12 @@ namespace MVPdemo.Presenters
             }
 
             if (_EditView != null) {
-
-               _EditView.LoadProductForEditRequest += OnLoadProductForEditRequested;
+                _EditView.LoadProductForEditRequest += OnLoadProductForEditRequested;              
                _EditView.UpdateProductRequest += OnUpdateProductRequested;
             }    
         }
 
+        //addProduct
         public void OnAddProductRequested(object sender, AddProductEventArgs e)
         {
             var product = new Product()
@@ -47,21 +47,24 @@ namespace MVPdemo.Presenters
             _view.DisplayMessage("Add product successfuly");
             OnLoadPorductRequested(sender, new LoadProductEventArgs());
         }
+       
+        //loadProduct
         public void OnLoadPorductRequested(object sender, LoadProductEventArgs e)
         {
             List<Product> products = model.GetProduct();
             _view.ShowProduct(products);
 
         }
-        public void OnRemoveProductRequested(object sender, int id)
+        //RemoveProduct
+        public void OnRemoveProductRequested(object sender, RemoveProductEventArgs e)
         {
-            model.DeleteProduct(id);
+             model.DeleteProduct(e.ProductId);
             _view.DisplayMessage("product deleted successfuly");
-            //OnLoadPorductRequested(sender, EventArgs.Empty);
         }
-        private void OnLoadProductForEditRequested(object sender, int productId)
+      //productProductForEdit
+        private void OnLoadProductForEditRequested(object sender, LoadProductForEditEventArgs e)
         {
-            Product product = model.GetProductById(productId);
+            Product product = model.GetProductById(e.ProductId);
             if (product != null)
             {
                 _EditView.LoadProductDetails(product);
@@ -71,8 +74,16 @@ namespace MVPdemo.Presenters
                 _EditView.DisplayMessage("Product not found.");
             }
         }
-        private void OnUpdateProductRequested(object sender, Product product)
+      //UpdateProduct
+        private void OnUpdateProductRequested(object sender, UpdateProductEventArgs e)
         {
+            Product product = new Product() {
+                Id = e.ProductId,
+                Name = e.ProductName,
+                Description = e.ProductDescription                                 
+            };
+
+
             model.UpdateProduct(product);
             _EditView.DisplayMessage("Product updated successfully!");
         }
