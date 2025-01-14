@@ -3,32 +3,36 @@
   "WorkspaceRootPath": "D:\\Github\\MvpDelegates\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{450418FA-5E19-43FD-84DB-F4257712E28B}|MVPdemo.csproj|d:\\github\\mvpdelegates\\views\\productpage.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{450418FA-5E19-43FD-84DB-F4257712E28B}|MVPdemo.csproj|solutionrelative:views\\productpage.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{450418FA-5E19-43FD-84DB-F4257712E28B}|MVPdemo.csproj|d:\\github\\mvpdelegates\\views\\editproduct.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{450418FA-5E19-43FD-84DB-F4257712E28B}|MVPdemo.csproj|solutionrelative:views\\editproduct.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{450418FA-5E19-43FD-84DB-F4257712E28B}|MVPdemo.csproj|d:\\github\\mvpdelegates\\interfaces\\iproductview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{450418FA-5E19-43FD-84DB-F4257712E28B}|MVPdemo.csproj|solutionrelative:interfaces\\iproductview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{450418FA-5E19-43FD-84DB-F4257712E28B}|MVPdemo.csproj|d:\\github\\mvpdelegates\\views\\productpage.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{450418FA-5E19-43FD-84DB-F4257712E28B}|MVPdemo.csproj|solutionrelative:views\\productpage.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{450418FA-5E19-43FD-84DB-F4257712E28B}|MVPdemo.csproj|D:\\Github\\MvpDelegates\\presenters\\productpresenter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{450418FA-5E19-43FD-84DB-F4257712E28B}|MVPdemo.csproj|solutionrelative:presenters\\productpresenter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{450418FA-5E19-43FD-84DB-F4257712E28B}|MVPdemo.csproj|d:\\github\\mvpdelegates\\views\\editproduct.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{450418FA-5E19-43FD-84DB-F4257712E28B}|MVPdemo.csproj|solutionrelative:views\\editproduct.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{450418FA-5E19-43FD-84DB-F4257712E28B}|MVPdemo.csproj|d:\\github\\mvpdelegates\\interfaces\\iproductedit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{450418FA-5E19-43FD-84DB-F4257712E28B}|MVPdemo.csproj|solutionrelative:interfaces\\iproductedit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{450418FA-5E19-43FD-84DB-F4257712E28B}|MVPdemo.csproj|d:\\github\\mvpdelegates\\interfaces\\producteventargs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{450418FA-5E19-43FD-84DB-F4257712E28B}|MVPdemo.csproj|solutionrelative:interfaces\\producteventargs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{450418FA-5E19-43FD-84DB-F4257712E28B}|MVPdemo.csproj|d:\\github\\mvpdelegates\\views\\productpage.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{450418FA-5E19-43FD-84DB-F4257712E28B}|MVPdemo.csproj|solutionrelative:views\\productpage.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{450418FA-5E19-43FD-84DB-F4257712E28B}|MVPdemo.csproj|D:\\Github\\MvpDelegates\\presenters\\productpresenter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{450418FA-5E19-43FD-84DB-F4257712E28B}|MVPdemo.csproj|solutionrelative:presenters\\productpresenter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{450418FA-5E19-43FD-84DB-F4257712E28B}|MVPdemo.csproj|d:\\github\\mvpdelegates\\interfaces\\iproductview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{450418FA-5E19-43FD-84DB-F4257712E28B}|MVPdemo.csproj|solutionrelative:interfaces\\iproductview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{450418FA-5E19-43FD-84DB-F4257712E28B}|MVPdemo.csproj|d:\\github\\mvpdelegates\\interfaces\\producteventargs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{450418FA-5E19-43FD-84DB-F4257712E28B}|MVPdemo.csproj|solutionrelative:interfaces\\producteventargs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -51,38 +55,51 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "EditProduct.aspx",
+              "DocumentMoniker": "D:\\Github\\MvpDelegates\\Views\\EditProduct.aspx",
+              "RelativeDocumentMoniker": "Views\\EditProduct.aspx",
+              "ToolTip": "D:\\Github\\MvpDelegates\\Views\\EditProduct.aspx",
+              "RelativeToolTip": "Views\\EditProduct.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-01-14T10:46:16.563Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "IProductEdit.cs",
               "DocumentMoniker": "D:\\Github\\MvpDelegates\\Interfaces\\IProductEdit.cs",
               "RelativeDocumentMoniker": "Interfaces\\IProductEdit.cs",
               "ToolTip": "D:\\Github\\MvpDelegates\\Interfaces\\IProductEdit.cs",
               "RelativeToolTip": "Interfaces\\IProductEdit.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-14T10:18:02.36Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "ProductEventArgs.cs",
               "DocumentMoniker": "D:\\Github\\MvpDelegates\\Interfaces\\ProductEventArgs.cs",
               "RelativeDocumentMoniker": "Interfaces\\ProductEventArgs.cs",
               "ToolTip": "D:\\Github\\MvpDelegates\\Interfaces\\ProductEventArgs.cs",
               "RelativeToolTip": "Interfaces\\ProductEventArgs.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAywBIAAAAqAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-14T10:18:35.551Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "ProductPresenter.cs",
               "DocumentMoniker": "D:\\Github\\MvpDelegates\\Presenters\\ProductPresenter.cs",
               "RelativeDocumentMoniker": "Presenters\\ProductPresenter.cs",
               "ToolTip": "D:\\Github\\MvpDelegates\\Presenters\\ProductPresenter.cs",
               "RelativeToolTip": "Presenters\\ProductPresenter.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAAWwCYAAAAIAAAA",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAmwBEAAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-13T07:28:03.817Z",
               "EditorCaption": ""
@@ -102,39 +119,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "IProductView.cs",
               "DocumentMoniker": "D:\\Github\\MvpDelegates\\Interfaces\\IProductView.cs",
               "RelativeDocumentMoniker": "Interfaces\\IProductView.cs",
               "ToolTip": "D:\\Github\\MvpDelegates\\Interfaces\\IProductView.cs",
               "RelativeToolTip": "Interfaces\\IProductView.cs",
-              "ViewState": "AQIAAAIAAAAAAAAAAAAmwBUAAAA8AAAA",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAmwBAAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-14T08:25:13.516Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ProductPage.aspx.cs",
               "DocumentMoniker": "D:\\Github\\MvpDelegates\\Views\\ProductPage.aspx.cs",
               "RelativeDocumentMoniker": "Views\\ProductPage.aspx.cs",
               "ToolTip": "D:\\Github\\MvpDelegates\\Views\\ProductPage.aspx.cs",
               "RelativeToolTip": "Views\\ProductPage.aspx.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAABwAAAAAAAAA",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAIwBkAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-14T08:39:28.659Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "EditProduct.aspx.cs",
               "DocumentMoniker": "D:\\Github\\MvpDelegates\\Views\\EditProduct.aspx.cs",
               "RelativeDocumentMoniker": "Views\\EditProduct.aspx.cs",
               "ToolTip": "D:\\Github\\MvpDelegates\\Views\\EditProduct.aspx.cs",
               "RelativeToolTip": "Views\\EditProduct.aspx.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAowDEAAAA5AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-14T10:28:30.576Z",
               "EditorCaption": ""

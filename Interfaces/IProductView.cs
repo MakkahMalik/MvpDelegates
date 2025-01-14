@@ -14,12 +14,13 @@ namespace MVPdemo.Interfaces
         //string ProductDescription { get; set; }
         void ShowProduct(List<Product> products);
         void DisplayMessage(string message);
+        void LoadProductDetails(Product product);
 
-       
-        event EventHandler<AddProductEventArgs> AddProductRequest;
-        event EventHandler<LoadProductEventArgs> LoadProductRequest;
-        event EventHandler<RemoveProductEventArgs> RemoveProductRequest;
-        //event EventHandler<int> LoadProductForEditRequest;
+        event EventHandler<ProductEventArgs> AddProductRequest;
+        event EventHandler<ProductEventArgs> LoadProductRequest;
+        event EventHandler<ProductEventArgs> RemoveProductRequest;
+        event EventHandler<ProductEventArgs> LoadProductForEditRequest;
+        event EventHandler<ProductEventArgs> UpdateProductRequest;
 
 
 

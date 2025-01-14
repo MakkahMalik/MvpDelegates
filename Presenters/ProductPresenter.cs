@@ -13,29 +13,22 @@ namespace MVPdemo.Presenters
     public class ProductPresenter
     {
         private readonly IProductView _view;
-        private readonly IProductEdit _EditView;
+    
         private readonly DatabaseHelper model;
-        public ProductPresenter(IProductView view , IProductEdit EditView)
+        public ProductPresenter(IProductView view )
         {
             _view = view;
-            _EditView = EditView;
-             model = new DatabaseHelper();
-
-            if(_view != null)
-            {
+           
+             model = new DatabaseHelper();         
                 _view.AddProductRequest += OnAddProductRequested;
                 _view.LoadProductRequest += OnLoadPorductRequested;
                 _view.RemoveProductRequest += OnRemoveProductRequested;
-            }
-
-            if (_EditView != null) {
-                _EditView.LoadProductForEditRequest += OnLoadProductForEditRequested;              
-               _EditView.UpdateProductRequest += OnUpdateProductRequested;
-            }    
+                _view.LoadProductForEditRequest += OnLoadProductForEditRequested;              
+                _view.UpdateProductRequest += OnUpdateProductRequested;             
         }
 
         //addProduct
-        public void OnAddProductRequested(object sender, AddProductEventArgs e)
+        public void OnAddProductRequested(object sender, ProductEventArgs e)
         {
             var product = new Product()
             {
@@ -45,37 +38,37 @@ namespace MVPdemo.Presenters
             };
             model.AddProduct(product);
             _view.DisplayMessage("Add product successfuly");
-            OnLoadPorductRequested(sender, new LoadProductEventArgs());
+            OnLoadPorductRequested(sender, new ProductEventArgs());
         }
        
         //loadProduct
-        public void OnLoadPorductRequested(object sender, LoadProductEventArgs e)
+        public void OnLoadPorductRequested(object sender, ProductEventArgs e)
         {
             List<Product> products = model.GetProduct();
             _view.ShowProduct(products);
 
         }
         //RemoveProduct
-        public void OnRemoveProductRequested(object sender, RemoveProductEventArgs e)
+        public void OnRemoveProductRequested(object sender, ProductEventArgs e)
         {
              model.DeleteProduct(e.ProductId);
             _view.DisplayMessage("product deleted successfuly");
         }
       //productProductForEdit
-        private void OnLoadProductForEditRequested(object sender, LoadProductForEditEventArgs e)
+        private void OnLoadProductForEditRequested(object sender, ProductEventArgs e)
         {
             Product product = model.GetProductById(e.ProductId);
             if (product != null)
             {
-                _EditView.LoadProductDetails(product);
+                _view.LoadProductDetails(product);
             }
             else
             {
-                _EditView.DisplayMessage("Product not found.");
+                _view.DisplayMessage("Product not found.");
             }
         }
       //UpdateProduct
-        private void OnUpdateProductRequested(object sender, UpdateProductEventArgs e)
+        private void OnUpdateProductRequested(object sender, ProductEventArgs e)
         {
             Product product = new Product() {
                 Id = e.ProductId,
@@ -85,7 +78,7 @@ namespace MVPdemo.Presenters
 
 
             model.UpdateProduct(product);
-            _EditView.DisplayMessage("Product updated successfully!");
+            _view.DisplayMessage("Product updated successfully!");
         }
     }
     }

@@ -6,36 +6,14 @@ using System.Threading.Tasks;
 
 namespace MVPdemo.Interfaces
 {
-
-    public class AddProductEventArgs : EventArgs
+    public class ProductEventArgs : EventArgs
     {
+        public int ProductId { get; set; } 
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
-
+   
     }
-
-    public class UpdateProductEventArgs : EventArgs
-    {
-        public int ProductId { get; set; }
-        public string ProductName { get; set; }
-        public string ProductDescription { get; set; }
-    }
-
-    public class RemoveProductEventArgs : EventArgs
-   {
-        public int ProductId { get; set; }
-    }
-
-    public class LoadProductEventArgs : EventArgs
-    {
-    }
-
-    public class LoadProductForEditEventArgs : EventArgs
-    {
-        public int ProductId { get; set; }
-    }
-
-
+   
 
 
 

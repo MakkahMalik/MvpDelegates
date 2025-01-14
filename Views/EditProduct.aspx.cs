@@ -3,21 +3,88 @@ using MVPdemo.Interfaces;
 using MVPdemo.Models;
 using MVPdemo.Presenters;
 using System;
+using System.Collections.Generic;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
 
 namespace MVPdemo.Views
 {
-    public partial class EditProduct : System.Web.UI.Page, IProductEdit
+    public partial class EditProduct : System.Web.UI.Page, IProductView
     {
         private readonly ProductPresenter presenter;
-        public event EventHandler<LoadProductForEditEventArgs> LoadProductForEditRequest;
-        public event EventHandler<UpdateProductEventArgs> UpdateProductRequest;
+        public event EventHandler<ProductEventArgs> LoadProductForEditRequest;
+        public event EventHandler<ProductEventArgs> UpdateProductRequest;
         public EditProduct()
         {
-            presenter = new ProductPresenter(null, this); // Pass only IProductEdit
+            presenter = new ProductPresenter(this); // Pass only IProductEdit
         }
+
+        event EventHandler<ProductEventArgs> IProductView.AddProductRequest
+        {
+            add
+            {
+                throw new NotImplementedException();
+            }
+
+            remove
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        event EventHandler<ProductEventArgs> IProductView.LoadProductRequest
+        {
+            add
+            {
+                throw new NotImplementedException();
+            }
+
+            remove
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        event EventHandler<ProductEventArgs> IProductView.RemoveProductRequest
+        {
+            add
+            {
+                throw new NotImplementedException();
+            }
+
+            remove
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        event EventHandler<ProductEventArgs> IProductView.LoadProductForEditRequest
+        {
+            add
+            {
+                throw new NotImplementedException();
+            }
+
+            remove
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        event EventHandler<ProductEventArgs> IProductView.UpdateProductRequest
+        {
+            add
+            {
+                throw new NotImplementedException();
+            }
+
+            remove
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -26,7 +93,7 @@ namespace MVPdemo.Views
                 if (Request.QueryString["Id"] != null)
                 {
                     int productId = Convert.ToInt32(Request.QueryString["Id"]);
-                    LoadProductForEditRequest?.Invoke(this, new LoadProductForEditEventArgs { ProductId = productId });
+                    LoadProductForEditRequest?.Invoke(this, new ProductEventArgs { ProductId = productId });
                 }
             }
         }
@@ -50,7 +117,7 @@ namespace MVPdemo.Views
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
             // Get values from form controls
-            UpdateProductEventArgs UpdateArg = new UpdateProductEventArgs()
+            ProductEventArgs UpdateArg = new ProductEventArgs()
             {
                 ProductId = Convert.ToInt32(hdnProductId.Value),
                 ProductName = txtProductName.Text,
@@ -65,5 +132,19 @@ namespace MVPdemo.Views
              lblMessage.Text = "Product updated successfully!";
         }
 
+        void IProductView.ShowProduct(List<Product> products)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IProductView.DisplayMessage(string message)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IProductView.LoadProductDetails(Product product)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
