@@ -56,10 +56,7 @@ namespace MVPdemo.Views
             txtName.Text =string.Empty;
             txtDescription.Text = string.Empty;
         }
-        protected void btnLoad_Click(object sender, EventArgs e)
-        {
-            LoadProductRequest.Invoke(this, EventArgs.Empty);
-        }
+
         public void ShowProduct(List<Product> products)
         {
             gvProduct.DataSource = products;

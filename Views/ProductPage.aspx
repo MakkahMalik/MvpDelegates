@@ -60,7 +60,7 @@
    </Columns>
 
    </asp:GridView>     
-           <asp:Button ID="btnLoad" Text="Load Users" OnClick="btnLoad_Click"  CssClass="btn btn-success" runat="server"/>
+
            
             <br/>           
             <br/>
