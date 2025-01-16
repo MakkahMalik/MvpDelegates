@@ -10,8 +10,7 @@ namespace MVPdemo.Interfaces
 {
     public interface IProductView
     {
-        //string ProductName { get; set; }
-        //string ProductDescription { get; set; }
+   
         void ShowProduct(List<Product> products);
         void DisplayMessage(string message);
         void LoadProductDetails(Product product);

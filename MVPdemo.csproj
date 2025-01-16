@@ -81,7 +81,6 @@
   <ItemGroup>
     <Compile Include="Data\DatabaseHelper.cs" />
     <Compile Include="Interfaces\IProductView.cs" />
-    <Compile Include="Interfaces\IProductEdit.cs" />
     <Compile Include="Interfaces\ProductEventArgs.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Presenters\ProductPresenter.cs" />

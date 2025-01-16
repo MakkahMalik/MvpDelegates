@@ -13,7 +13,7 @@
 <body>
 
         <div class="container">
-  <h2>Stacked form</h2>
+  <h2>Update Product</h2>
     <form id="form2" runat="server">
    
 <%--      <div class="form-group">--%>

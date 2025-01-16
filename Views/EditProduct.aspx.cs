@@ -13,77 +13,22 @@ namespace MVPdemo.Views
     public partial class EditProduct : System.Web.UI.Page, IProductView
     {
         private readonly ProductPresenter presenter;
-        public event EventHandler<ProductEventArgs> LoadProductForEditRequest;
-        public event EventHandler<ProductEventArgs> UpdateProductRequest;
+        public event EventHandler<ProductEventArgs> LoadProductForEditRequest; 
+        public event EventHandler<ProductEventArgs> UpdateProductRequest; //
+        public event EventHandler<ProductEventArgs> AddProductRequest;
+        public event EventHandler<ProductEventArgs> LoadProductRequest;
+        public event EventHandler<ProductEventArgs> RemoveProductRequest;
+
         public EditProduct()
         {
             presenter = new ProductPresenter(this); // Pass only IProductEdit
         }
-
-        event EventHandler<ProductEventArgs> IProductView.AddProductRequest
-        {
-            add
-            {
-                throw new NotImplementedException();
-            }
-
-            remove
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        event EventHandler<ProductEventArgs> IProductView.LoadProductRequest
-        {
-            add
-            {
-                throw new NotImplementedException();
-            }
-
-            remove
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        event EventHandler<ProductEventArgs> IProductView.RemoveProductRequest
-        {
-            add
-            {
-                throw new NotImplementedException();
-            }
-
-            remove
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        event EventHandler<ProductEventArgs> IProductView.LoadProductForEditRequest
-        {
-            add
-            {
-                throw new NotImplementedException();
-            }
-
-            remove
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        event EventHandler<ProductEventArgs> IProductView.UpdateProductRequest
-        {
-            add
-            {
-                throw new NotImplementedException();
-            }
-
-            remove
-            {
-                throw new NotImplementedException();
-            }
-        }
+     
+        //event EventHandler<ProductEventArgs> IProductView.RemoveProductRequest
+        //{
+        //    add { RemoveProductRequest += value; }
+        //    remove { RemoveProductRequest -= value; }
+        //}
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -131,20 +76,13 @@ namespace MVPdemo.Views
             // Show success message
              lblMessage.Text = "Product updated successfully!";
         }
-
         void IProductView.ShowProduct(List<Product> products)
         {
             throw new NotImplementedException();
         }
 
-        void IProductView.DisplayMessage(string message)
-        {
-            throw new NotImplementedException();
-        }
+      
 
-        void IProductView.LoadProductDetails(Product product)
-        {
-            throw new NotImplementedException();
-        }
+      
     }
 }

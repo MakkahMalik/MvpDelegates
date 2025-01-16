@@ -20,14 +20,16 @@ namespace MVPdemo.Views
         public event EventHandler<ProductEventArgs> AddProductRequest;
         public event EventHandler<ProductEventArgs> LoadProductRequest;
         public event EventHandler<ProductEventArgs> RemoveProductRequest;
-    
+        public event EventHandler<ProductEventArgs> LoadProductForEditRequest;
+        public event EventHandler<ProductEventArgs> UpdateProductRequest;
+
         public ProductPage()
         {
             presenter = new ProductPresenter(this);
 
         }
 
-     //page load
+        //page load
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -54,6 +56,8 @@ namespace MVPdemo.Views
         {
             lblMessage.Text = message;
         }
+       
+        //page btnSave
         protected void btnSave_Click(object sender, EventArgs e)
         {
             ProductEventArgs args = new ProductEventArgs()
@@ -67,6 +71,7 @@ namespace MVPdemo.Views
             txtDescription.Text = string.Empty;
         }
 
+        //gvProduct_RowCommand
         protected void gvProduct_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "DeleteProduct")
@@ -102,36 +107,12 @@ namespace MVPdemo.Views
             gvProduct.DataBind();
         }
 
-        void IProductView.LoadProductDetails(Product product)
-        {
-            throw new NotImplementedException();
-        }
+        //showproduct
 
-        event EventHandler<ProductEventArgs> IProductView.LoadProductForEditRequest
-        {
-            add
-            {
-                throw new NotImplementedException();
-            }
+        public void LoadProductDetails(Product product) { }
 
-            remove
-            {
-                throw new NotImplementedException();
-            }
-        }
 
-        event EventHandler<ProductEventArgs> IProductView.UpdateProductRequest
-        {
-            add
-            {
-                throw new NotImplementedException();
-            }
-
-            remove
-            {
-                throw new NotImplementedException();
-            }
-        }
+       
 
 
     }

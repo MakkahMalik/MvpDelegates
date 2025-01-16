@@ -22,11 +22,13 @@ namespace MVPdemo.Data
         }
         public void AddProduct(Product product)
      {
-            string query = "Insert into products (Name, Description) Values(@name , @description)";
+            string query = "Insert into products (Name, Description, CreatedAt, ModifiedAt ) Values(@name , @description ,@createdAt , @modifiedAt  )";
             using (DbCommand cmd = _db.GetSqlStringCommand(query))
             {
                 _db.AddInParameter(cmd, "@name", DbType.String, product.Name);
                 _db.AddInParameter(cmd, "@description", DbType.String, product.Description);
+                _db.AddInParameter(cmd, "@createdAt", DbType.DateTime, DateTime.Now);
+                _db.AddInParameter(cmd, "@modifiedAt", DbType.DateTime, DateTime.Now);
                 _db.ExecuteNonQuery(cmd);
             }
 
@@ -34,7 +36,7 @@ namespace MVPdemo.Data
         }  //end addproduct;
         public List<Product> GetProduct()
         {
-            string query = "Select * from products";
+            string query = "Select * from products where IsDeleted = 0";
             using(DbCommand cmd = _db.GetSqlStringCommand(query))
             {
                 using(IDataReader  reader = _db.ExecuteReader(cmd))
@@ -46,7 +48,10 @@ namespace MVPdemo.Data
                             Id = reader.GetInt32(0),
                             Name = reader["Name"].ToString(),
                             Description = reader["Description"].ToString(),
-                        
+                            CreatedAt = reader.GetDateTime(reader.GetOrdinal("CreatedAt")),
+                            ModifiedAt = reader.GetDateTime(reader.GetOrdinal("ModifiedAt")),
+                            IsDeleted = reader.GetBoolean(reader.GetOrdinal("IsDeleted"))
+
                         });
                     }
 
@@ -57,9 +62,11 @@ namespace MVPdemo.Data
         } //end Getproduct;
         public void DeleteProduct(int id)
          {
-            string query = "Delete from products where Id = @id  ";
-            using(DbCommand cmd = _db.GetSqlStringCommand(query))
+            string query = "UPDATE products SET IsDeleted = 1, ModifiedAt = @modifiedAt WHERE Id = @id";
+            //string query = "Delete from products where   Id = @id and IsDeleted = 0 ";
+            using (DbCommand cmd = _db.GetSqlStringCommand(query))
             {
+                _db.AddInParameter(cmd, "@modifiedAt", DbType.DateTime, DateTime.Now);
                 _db.AddInParameter(cmd , "@id" , DbType.Int32, id);
                 _db.ExecuteNonQuery(cmd);
             }
@@ -67,18 +74,19 @@ namespace MVPdemo.Data
         }  //end Deleteproduct;
         public void UpdateProduct( Product product)
         {
-            string query = "update products set Name  = @name , Description = @description where Id = @id";
+            string query = "update products set Name  = @name , Description = @description  ,ModifiedAt = @modifiedAt  where Id = @id";
             using(DbCommand cmd = _db.GetSqlStringCommand(query))
             {
                 _db.AddInParameter(cmd, "@name", DbType.String, product.Name);
                 _db.AddInParameter(cmd , "@description" , DbType.String , product.Description);
+                _db.AddInParameter(cmd, "@modifiedAt", DbType.DateTime, DateTime.Now);
                 _db.AddInParameter(cmd , "@id" , DbType.Int32, product.Id);
                 _db.ExecuteNonQuery(cmd);
             }
         }  //end Updateproduct;
         public Product GetProductById(int id)
         {
-            string query = "SELECT * FROM products WHERE Id = @id";
+            string query = "SELECT * FROM products WHERE Id = @id and IsDeleted = 0";
             using (DbCommand cmd = _db.GetSqlStringCommand(query))
             {
                 _db.AddInParameter(cmd, "@id", DbType.Int32, id);
@@ -90,7 +98,10 @@ namespace MVPdemo.Data
                         {
                             Id = reader.GetInt32(0),
                             Name = reader["Name"].ToString(),
-                            Description = reader["Description"].ToString()
+                            Description = reader["Description"].ToString(),
+                            CreatedAt = reader.GetDateTime(reader.GetOrdinal("CreatedAt")),
+                            ModifiedAt = reader.GetDateTime(reader.GetOrdinal("ModifiedAt")),
+                            IsDeleted = reader.GetBoolean(reader.GetOrdinal("IsDeleted"))
                         };
                     }
                 }
